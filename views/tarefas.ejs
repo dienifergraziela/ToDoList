@@ -1,41 +1,31 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>To Do List</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-
-<body>
-    <h1>⭒ To Do List ⭒</h1>
-    <ul>
-        <% tarefas.forEach(tarefa => { %>
-            <li>
-                <h2><%= tarefa.name %></h2>
-                <p><%= tarefa.description %></p>
-                <a href="/tarefas/<%= tarefa.id_tarefa %>/editar">Editar</a>
-                <form action="/tarefas/<%= tarefa.id_tarefa %>/excluir" method="POST" style="display: inline;">
-                    <button type="submit">Excluir</button>
-                </form>
-                <form action="/tarefas/<%= tarefa.id_tarefa %>/atualizar-status" method="POST" style="display: inline;">
-                    <select name="status">
-                      <option value="feita" <%= tarefa.status === 'feita' ? 'selected' : '' %>>Feita</option>
-                      <option value="fazendo" <%= tarefa.status === 'fazendo' ? 'selected' : '' %>>Fazendo</option>
-                      <option value="à fazer" <%= tarefa.status === 'à fazer' ? 'selected' : '' %>>À Fazer</option>
-                    </select>
-                    <button type="submit">Atualizar Status</button>
-                  </form>
-            </li>
+<h1>⭒ To Do List ⭒</h1>
+<ul>
+    <% tarefas.forEach(tarefa=> { %>
+        <li>
+            <h2>
+                <%= tarefa.name %>
+            </h2>
+            <p>
+                <%= tarefa.description %>
+            </p>
+            <a href="/tarefas/<%= tarefa.id_tarefa %>/editar">Editar</a>
+            <form action="/tarefas/<%= tarefa.id_tarefa %>/excluir" method="POST" style="display: inline;">
+                <button type="submit">Excluir</button>
+            </form>
+            <form action="/tarefas/<%= tarefa.id_tarefa %>/atualizar-status" method="POST" style="display: inline;">
+                <select name="status">
+                    <option value="feita" <%=tarefa.status==='feita' ? 'selected' : '' %>>Feita</option>
+                    <option value="fazendo" <%=tarefa.status==='fazendo' ? 'selected' : '' %>>Fazendo</option>
+                    <option value="à fazer" <%=tarefa.status==='à fazer' ? 'selected' : '' %>>À Fazer</option>
+                </select>
+                <button type="submit">Atualizar Status</button>
+            </form>
+        </li>
         <% }); %>
-    </ul>
-    
-    <form action="/tarefas" method="POST">
-        <input type="text" name="name" placeholder="Nova Tarefa" required>
-        <input type="text" name="description" placeholder="Descrição" required>
-        <button type="submit">Adicionar</button>
-    </form>
+</ul>
 
-  
-</body>
-
-</html>
+<form action="/tarefas" method="POST">
+    <input type="text" name="name" placeholder="Nova Tarefa" required>
+    <input type="text" name="description" placeholder="Descrição" required>
+    <button type="submit">Adicionar</button>
+</form>
