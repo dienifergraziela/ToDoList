@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Editar Tarefa</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+    <h1>Editar Tarefa</h1>
+    <form action="/tarefas/<%= tarefa.id_tarefa %>/editar" method="POST">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" value="<%= tarefa.name %>" required><br>
+
+        <label for="description">Descrição:</label>
+        <textarea id="description" name="description" required><%= tarefa.description %></textarea><br>
+
+        <input type="submit" value="Salvar">
+    </form>
+</body>
+
+</html>
