@@ -5,7 +5,7 @@ app.use(expressLayouts);
 app.set('layout', './layouts/defaults/index');
 
 const tarefaController = require('./controllers/tarefaController');
-
+const usuarioController = require('./controllers/usuarioController');
 const port = 8080;
 
 app.set('view engine', 'ejs');
@@ -13,6 +13,16 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 app.use(express.urlencoded({ extended: true }));
+
+app.get('/login',(req, res) => {
+    usuarioController.login(req, res);
+    app.set('layout','./layouts/defauts/login')
+})
+
+app.post('/login', (req, res)=>{
+    usuarioController.autenticar(req, res);
+
+})
 
 app.get('/tarefas', tarefaController.getTarefas);
 
