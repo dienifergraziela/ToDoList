@@ -1,0 +1,20 @@
+CREATE SCHEMA IF NOT EXISTS `ToDoList` DEFAULT CHARACTER SET utf8 ;
+USE `ToDoList` ;
+
+CREATE TABLE IF NOT EXISTS `ToDoList`.`tarefa` (
+  `id_tarefa` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(300) NOT NULL,
+  PRIMARY KEY (`id_tarefa`),
+  UNIQUE INDEX `id_tarefa_UNIQUE` (`id_tarefa` ASC) )
+ENGINE = InnoDB;
+
+CREATE TABLE `users` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

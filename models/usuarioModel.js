@@ -1,4 +1,5 @@
 const db = require('./database');
+const md5 =require('md5');
 
 class UsuarioModel{
     constructor(id_User, username, email, password ){
@@ -9,7 +10,7 @@ class UsuarioModel{
     }
 
     static autenticar(email, password){
-        let sql = 'SELECT * FROM users where email='${(email)}' AND password='${md5(password)}'';
+        let sql = `SELECT * FROM users WHERE email = '${email}' AND password = '${md5(password)}'`;
         console.log(sql);
     }
 }
