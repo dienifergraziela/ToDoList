@@ -23,21 +23,25 @@ app.get('/login', (req, res) => {
 
 app.post('/login', (req, res) => {
     usuarioController.autenticar(req, res);
-
+/*
     if (1 == 0) {
-        /*ERRADO - arrumar*/
+        /*ERRADO - arrumar
     } else {
         app.set('layout', './layouts/defaults/index');
         res.locals.layoutVariables = {
             url: process.env.URL,
             img: "/img/",
             style: "/css/",
-            title: "Tarefas",
+            name: "Tarefas",
             user: req.session.user,
         };
-        next();
-    }/*nao sei se esse if e else é aqui */
-
+        
+        if(req.session.msg){
+            res.locals.layoutVariables.msg = req.session.msg;
+            delete req.session.msg;
+        }
+    }/*nao sei se esse if e else é aqui 
+    next();*/
 })
 
 app.get('/logout', (req, res) => {

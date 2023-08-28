@@ -54,10 +54,13 @@ function deleteTarefa(req, res) {
     // Faça uma consulta para excluir a tarefa no banco de dados
     Tarefa.delete(id, (err) => {
       if (err) {
+        res.send('n foi dessa vez')
+       // req.session.msg="ERRO, NAO EXCLUIU!"
         console.error('Erro ao excluir a tarefa:', err);
-        return res.status(500).send('Erro ao excluir a tarefa do banco de dados.');
+      }else{
+        res.send('deu certo hehe')
+        res.redirect('/tarefas'); // Redireciona para a lista de tarefas após a exclusão
       }
-      res.redirect('/tarefas'); // Redireciona para a lista de tarefas após a exclusão
     });
 }
 

@@ -1,5 +1,4 @@
 const UsuarioModel = require('../models/usuarioModel');
-const usuarioModel = require('../models/usuarioModel');
 
 function login(req,res){
     res.render('login');
